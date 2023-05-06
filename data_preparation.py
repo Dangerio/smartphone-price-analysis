@@ -153,6 +153,7 @@ for num, row in df.iterrows():
 
 # конец кода Саши
 
+import re
 
 # converting prices
 def get_price(price_str):
@@ -186,6 +187,10 @@ def get_disp_h(res_str):
     else:
         _, height = map(int, res_str.split(' x '))
         return height
+
+# parsing brand
+def get_brand(phone_title):
+    return phone_title.split()[0]
 
 # parsing operational system
 def get_opersyst(oper_syst_str):
@@ -246,6 +251,9 @@ df['oper_syst_type'] = df['Operational system'].apply(get_opersyst)
 df['oper_syst_vers'] = df['Operational system'].apply(get_operversion)
 df.oper_syst_type.replace({'Duali': 'IOS', 'BlackBerry': 'Other'}, inplace=True)
 
+# parsing brand
+df['brand'] = df['Phone Title'].apply(get_brand)
+
 # dropping columns we do not need
 df.drop(columns=['Display resolution', 'Operational system', 'Specs'], inplace=True)
 
@@ -261,5 +269,6 @@ df.dropna(inplace=True)
 
 # saving dataset
 df.to_csv('data/PhonesDF.csv', encoding='utf-8', index=False)
+
             
     
