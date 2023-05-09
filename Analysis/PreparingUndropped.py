@@ -57,4 +57,4 @@ mask = (resid_std < t_crit_r) & (resid_std > t_crit_l)
 
 data = data[mask]
 
-data.to_csv('PhonesDFUndroppedV2.csv', index=False)
+data.to_csv('Data/PhonesDFUndroppedV2.csv', index=False)
