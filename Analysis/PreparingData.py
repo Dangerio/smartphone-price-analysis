@@ -57,4 +57,6 @@ mask = (resid_std < t_crit_r) & (resid_std > t_crit_l)
 
 data = data[mask]
 
-data.to_csv('Data/PhonesDFUndroppedV2.csv', index=False)
+data.to_csv('Data/PhonesDFUndroppedV2.csv', index=True)
+
+data.drop(columns=['brand_Xiaomi', 'battery_type_LiIon']).to_csv('Data/PhonesDF_years_corrected_v2.csv', index=True)
