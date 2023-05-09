@@ -25,7 +25,7 @@ data = data.loc[(data.price >= np.exp(8.3)) & (data.price < np.exp(12.5)), :].co
 # adding log price and PPI to dataset
 data['log_price'] = np.log(data.price)
 data['density'] = data.disp_height * data.disp_width / data.disp_diag**2
-data = data.drop(columns = ['price', 'specs_score'])
+data = data.drop(columns = ['price'])
 
 # data = data[data['brand_Hotwav'] != 1]
 # data = data.drop(columns = ['brand_Hotwav'])
@@ -59,4 +59,4 @@ data = data[mask]
 
 data.to_csv('Data/PhonesDFUndroppedV2.csv', index=True)
 
-data.drop(columns=['brand_Xiaomi', 'battery_type_LiIon']).to_csv('Data/PhonesDF_years_corrected_v2.csv', index=True)
+data.drop(columns=['brand_Xiaomi', 'battery_type_LiIon', 'disp_width', 'disp_height', 'oper_syst_vers', 'IOS_oper_syst']).to_csv('Data/PhonesDF_years_corrected_v2.csv', index=True)
